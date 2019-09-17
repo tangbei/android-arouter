@@ -81,7 +81,7 @@ dependencies {
         exclude module: 'retrofit'
         exclude module: 'okio'
     }
-    api rootProject.ext.dependencies["okhttp4"]
+    api rootProject.ext.dependencies["okhttp3"]
     api rootProject.ext.dependencies["glide"]
     compileOnly rootProject.ext.dependencies["glide"]
     annotationProcessor(rootProject.ext.dependencies["glide-compiler"]) {
@@ -89,6 +89,6 @@ dependencies {
     }
     api rootProject.ext.dependencies["gson"]
     api rootProject.ext.dependencies['arouter']
-
+    api rootProject.ext.dependencies["multidex"]
     testImplementation rootProject.ext.dependencies["junit"]
 }

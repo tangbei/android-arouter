@@ -14,6 +14,7 @@ import okhttp3.HttpUrl;
  * e-mail : itangbei@sina.com
  * 创建时间: 2019/9/16.
  */
+@Deprecated
 public class CookiesManager implements CookieJar {
 
     private static final PersistentCookieStore COOKIE_STORE = PersistentCookieStore.getCookieStore();

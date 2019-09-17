@@ -9,7 +9,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * 描述:
+ * 描述: 请求和回调拦截实现类
  * 作者 : Tong
  * e-mail : itangbei@sina.com
  * 创建时间: 2019/9/16.

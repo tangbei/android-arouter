@@ -11,13 +11,14 @@ import com.tang.app_common.cookies.SetCookiesInterceptor;
 import com.tang.app_common.interceptor.GlobalHttpHandlerImpl;
 import com.tang.app_common.interceptor.HttpLoggingInterceptor;
 import com.tang.app_common.utils.ConstantUtil;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.io.File;
 import java.io.IOException;
+import java.security.cert.CertificateException;
 import java.util.concurrent.TimeUnit;
-
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import io.rx_cache2.internal.RxCache;
 import io.victoralbertos.jolyglot.GsonSpeaker;
 import okhttp3.Interceptor;
@@ -37,7 +38,10 @@ public class RequestManager implements IRequestManager {
 
     private static final int TIME_OUT = 6*1000;
 
+    private GlobalHttpHandlerImpl globalHttpHandler;
+
     public RequestManager() {
+        globalHttpHandler = new GlobalHttpHandlerImpl(ConstantUtil.getAPPContext());
     }
 
     /**
@@ -66,14 +70,12 @@ public class RequestManager implements IRequestManager {
                 .addNetworkInterceptor(new HttpLoggingInterceptor())
                 .addInterceptor(new ReceivedCookiesInterceptor(ConstantUtil.getAPPContext()))
                 .addInterceptor(new SetCookiesInterceptor(ConstantUtil.getAPPContext()))
-                .addInterceptor((@NotNull Interceptor.Chain chain) -> {
-                    Response response = null;
-                    try {
-                        response = chain.proceed(new GlobalHttpHandlerImpl(ConstantUtil.getAPPContext()).onHttpRequestBefore(chain,chain.request()));
-                    }catch (IOException e){
-                        e.printStackTrace();
+                .sslSocketFactory(getSSLSocketFactory())
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        return chain.proceed(globalHttpHandler.onHttpRequestBefore(chain,chain.request()));
                     }
-                    return response;
                 });
         return okHttpBuilder.build();
     }
@@ -113,5 +115,45 @@ public class RequestManager implements IRequestManager {
             file.mkdirs();
         }
         return file;
+    }
+
+    /**
+     * 不验证证书
+     *
+     * @return
+     * @throws Exception
+     */
+    private static SSLSocketFactory getSSLSocketFactory() {
+        //创建一个不验证证书链的证书信任管理器。
+        final TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+            @Override
+            public void checkClientTrusted(
+                    java.security.cert.X509Certificate[] chain,
+                    String authType) throws CertificateException {
+            }
+
+            @Override
+            public void checkServerTrusted(
+                    java.security.cert.X509Certificate[] chain,
+                    String authType) throws CertificateException {
+            }
+
+            @Override
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return new java.security.cert.X509Certificate[0];
+            }
+        }};
+
+        final SSLContext sslContext;
+        try {
+            sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, trustAllCerts,
+                    new java.security.SecureRandom());
+            return sslContext
+                    .getSocketFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

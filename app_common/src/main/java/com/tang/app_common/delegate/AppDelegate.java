@@ -3,12 +3,13 @@ package com.tang.app_common.delegate;
 import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.multidex.MultiDex;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 描述: application实现
+ * 描述: application生命周期代理
  * 作者 : Tong
  * e-mail : itangbei@sina.com
  * 创建时间: 2019/9/12.
@@ -28,6 +29,7 @@ public class AppDelegate implements AppLifecycles {
     @Override
     public void attachBaseContext(@NonNull Context base) {
         mActivityConfig.injectActivityLifecycle(base,mActivityLifecycles);
+        MultiDex.install(base);
     }
 
     @Override
@@ -36,6 +38,7 @@ public class AppDelegate implements AppLifecycles {
         for (Application.ActivityLifecycleCallbacks lifecycle : mActivityLifecycles){
             mApplication.registerActivityLifecycleCallbacks(lifecycle);
         }
+
     }
 
     @Override

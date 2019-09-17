@@ -26,6 +26,7 @@ import okhttp3.HttpUrl;
  * e-mail : itangbei@sina.com
  * 创建时间: 2019/9/16.
  */
+@Deprecated
 public class PersistentCookieStore {
 
     private static final String LOG_TAG = "PersistentCookieStore";

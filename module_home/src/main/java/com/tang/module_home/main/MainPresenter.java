@@ -32,7 +32,7 @@ public class MainPresenter extends BasePresenter<MainContract.Model,MainContract
                         LogUtil.d("wp来了哦");
                     }
                 });
-        HttpManager.getCommonApi().getHomeRecommend();
+//        HttpManager.getCommonApi().getHomeRecommend();
     }
 
     @Override

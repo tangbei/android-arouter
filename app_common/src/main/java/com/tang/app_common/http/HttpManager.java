@@ -33,6 +33,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  * e-mail : itangbei@sina.com
  * 创建时间: 2019/9/16.
  */
+@Deprecated
 public class HttpManager {
 
     private static final int TIME_OUT = 5 * 1000;//链接超时时间
