@@ -36,5 +36,6 @@ dependencies {
         exclude module: 'support-annotations'
         exclude module: 'support-compat'
     }
+//    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     testImplementation rootProject.ext.dependencies['junit']
 }

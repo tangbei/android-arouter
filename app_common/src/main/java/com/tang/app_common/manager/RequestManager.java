@@ -5,7 +5,8 @@ import com.tang.app_common.cache.Cache;
 import com.tang.app_common.cache.CacheType;
 import com.tang.app_common.cache.IntelligentCache;
 import com.tang.app_common.cache.LruCache;
-import com.tang.app_common.config.AppConfig;
+import com.tang.app_common.constant.AppConfig;
+import com.tang.app_common.constant.Constant;
 import com.tang.app_common.cookies.ReceivedCookiesInterceptor;
 import com.tang.app_common.cookies.SetCookiesInterceptor;
 import com.tang.app_common.interceptor.GlobalHttpHandlerImpl;
@@ -51,7 +52,7 @@ public class RequestManager implements IRequestManager {
     @Override
     public Retrofit provideRetorfit() {
         Retrofit.Builder builder = new Retrofit.Builder().
-                baseUrl(AppConfig.BASE_URL)
+                baseUrl(Constant.Api.BASE_URL)
                 .client(provideClient())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//使用rxjava
                 .addConverterFactory(GsonConverterFactory.create());//使用gson
@@ -109,7 +110,7 @@ public class RequestManager implements IRequestManager {
      * 创建缓存文件
      * @return
      */
-    private File getCacheFile(){
+    public File getCacheFile(){
         File file = new File(ConstantUtil.getAPPContext().getCacheDir(),AppConfig.Path.APP_PATH_GLIDE);
         if (!file.exists()){
             file.mkdirs();

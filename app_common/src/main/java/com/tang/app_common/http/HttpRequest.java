@@ -1,6 +1,6 @@
 package com.tang.app_common.http;
 
-import com.tang.app_common.config.AppConfig;
+import com.tang.app_common.constant.AppConfig;
 import com.tang.app_common.lifecycle.Lifecycleable;
 import com.tang.app_common.mvp.IView;
 import com.tang.app_common.utils.RxLifecycleUtils;

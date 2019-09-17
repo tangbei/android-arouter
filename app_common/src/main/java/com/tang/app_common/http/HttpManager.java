@@ -1,6 +1,7 @@
 package com.tang.app_common.http;
 
-import com.tang.app_common.config.AppConfig;
+import com.tang.app_common.constant.AppConfig;
+import com.tang.app_common.constant.Constant;
 import com.tang.app_common.cookies.CookiesManager;
 import com.tang.app_common.interceptor.HttpLoggingInterceptor;
 import com.tang.app_common.utils.AppUtil;
@@ -46,7 +47,7 @@ public class HttpManager {
             if (httpService == null) {
                 synchronized (HttpManager.class) {
                     if (httpService == null) {
-                        httpService = createService(HttpService.class, AppConfig.BASE_URL);
+                        httpService = createService(HttpService.class, Constant.Api.BASE_URL);
                     }
                 }
             }

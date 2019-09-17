@@ -1,4 +1,4 @@
-package com.tang.app_common.config;
+package com.tang.app_common.constant;
 
 import android.os.Environment;
 
@@ -9,10 +9,6 @@ import android.os.Environment;
  * 创建时间: 2019/9/16.
  */
 public class AppConfig {
-
-    public static final String TAG = "";
-
-    public static final String BASE_URL = "https://b.toolmall.com";
 
     public static final int maxRetries = 3;//请求重试次数
 

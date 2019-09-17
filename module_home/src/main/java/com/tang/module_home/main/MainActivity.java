@@ -6,8 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.tang.app_common.base.BaseActivity;
+import com.tang.app_common.constant.Constant;
 import com.tang.app_common.mvp.IModel;
 import com.tang.app_common.router.CommonRouter;
+import com.tang.app_common.utils.LogUtil;
 import com.tang.module_home.R;
 
 /**
@@ -36,6 +38,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+
+        String tsst = getIntent().getStringExtra("test");
+        LogUtil.d(Constant.Common.TAG,"----->"+tsst);
         mPresenter.setLogin();
     }
 

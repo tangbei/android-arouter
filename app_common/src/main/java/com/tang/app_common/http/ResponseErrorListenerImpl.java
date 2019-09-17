@@ -5,7 +5,8 @@ import android.net.ParseException;
 
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
-import com.tang.app_common.config.AppConfig;
+import com.tang.app_common.constant.AppConfig;
+import com.tang.app_common.constant.Constant;
 import com.tang.app_common.utils.LogUtil;
 
 import org.json.JSONException;
@@ -40,7 +41,7 @@ public class ResponseErrorListenerImpl implements ResponseErrorListener {
         } else if (t instanceof JsonParseException || t instanceof ParseException || t instanceof JSONException || t instanceof JsonIOException) {
             msg = "数据解析错误";
         }
-        LogUtil.d(AppConfig.TAG,msg);
+        LogUtil.d(Constant.Common.TAG,msg);
 //        ToastUtil.show(context,msg);
 //        ArmsUtils.snackbarText(msg);
     }

@@ -1,8 +1,8 @@
 package com.tang.module_home.main;
 
 import com.tang.app_common.base.BaseResponse;
-import com.tang.app_common.config.AppConfig;
-import com.tang.app_common.http.HttpManager;
+import com.tang.app_common.constant.AppConfig;
+import com.tang.app_common.constant.Constant;
 import com.tang.app_common.http.HttpRequest;
 import com.tang.app_common.mvp.BasePresenter;
 import com.tang.app_common.utils.LogUtil;
@@ -38,6 +38,6 @@ public class MainPresenter extends BasePresenter<MainContract.Model,MainContract
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LogUtil.d(AppConfig.TAG,"我是mainPresenter的销毁操作");
+        LogUtil.d(Constant.Common.TAG,"我是mainPresenter的销毁操作");
     }
 }

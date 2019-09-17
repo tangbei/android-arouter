@@ -8,6 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.View;
+
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.tang.app_common.R;
+import com.tang.app_common.constant.Constant;
 import com.tang.app_common.delegate.IActivity;
 import com.tang.app_common.lifecycle.ActivityLifecycleable;
 import com.tang.app_common.mvp.IPresenter;
