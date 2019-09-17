@@ -1,21 +1,23 @@
 package com.tang.app_common.base;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.View;
-
 import com.tang.app_common.delegate.IActivity;
+import com.tang.app_common.lifecycle.ActivityLifecycleable;
 import com.tang.app_common.mvp.IPresenter;
+import com.tang.app_common.mvp.IView;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.subjects.BehaviorSubject;
+import io.reactivex.subjects.Subject;
 
 /**
  * 描述:
@@ -23,14 +25,20 @@ import butterknife.Unbinder;
  * e-mail : itangbei@sina.com
  * 创建时间: 2019/9/11.
  */
-public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IActivity {
+public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IActivity, ActivityLifecycleable {
 
     protected final String TAG = this.getClass().getSimpleName();
-//    private final BehaviorSubject<ActivityEvent> mLifecycleSubject = BehaviorSubject.create();
+    private final BehaviorSubject<ActivityEvent> mLifecycleSubject = BehaviorSubject.create();
 //    private Cache<String, Object> mCache;
     private Unbinder mUnbinder;
     @Nullable
     protected P mPresenter;//如果当前页面逻辑简单, Presenter 可以为 null
+
+    @NonNull
+    @Override
+    public Subject<ActivityEvent> provideLifecycleSubject() {
+        return mLifecycleSubject;
+    }
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
@@ -54,7 +62,19 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
             if (e instanceof InflateException) throw e;
             e.printStackTrace();
         }
+        if (null != createPresenter()){
+            mPresenter = createPresenter();
+            mPresenter.getRootView();
+        }
         initData(savedInstanceState);
+    }
+
+    /**
+     * 如果页面简单，可以不创建presenter
+     * @return
+     */
+    protected P createPresenter() {
+        return null;
     }
 
     @Override

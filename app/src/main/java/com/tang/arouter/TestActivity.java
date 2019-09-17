@@ -15,6 +15,7 @@ import com.tang.app_common.router.CommonRouter;
  */
 @Route(path = CommonRouter.PATH_APP_TEST_ACTIVITY)
 public class TestActivity extends BaseActivity {
+
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
         return R.layout.activity_test;
@@ -24,4 +25,5 @@ public class TestActivity extends BaseActivity {
     public void initData(@Nullable Bundle savedInstanceState) {
 
     }
+
 }

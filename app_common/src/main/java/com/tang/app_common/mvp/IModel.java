@@ -4,16 +4,9 @@ package com.tang.app_common.mvp;
  * 描述:
  * 作者 : Tong
  * e-mail : itangbei@sina.com
- * 创建时间: 2019/9/11.
+ * 创建时间: 2019/9/12.
  */
-public interface IPresenter {
-
-    void getRootView();
-
-    /**
-     * 做一些初始化操作
-     */
-    void onStart();
+public interface IModel {
 
     /**
      * 销毁操作
