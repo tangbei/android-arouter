@@ -2,7 +2,7 @@
 
 本工程使用现在最流行的组件化方案，多 module 方案，并使用 aRouter 作为支撑。
 
-(https://github.com/tangbei/android-arouter/blob/master/20190917184252.jpg)
+https://github.com/tangbei/android-arouter/blob/master/20190917184252.jpg
 
 
 #### 工程结构
