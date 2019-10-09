@@ -1,11 +1,11 @@
 package com.tang.module_home.main;
 
-import com.tang.app_common.base.BaseResponse;
-import com.tang.app_common.http.HttpService;
-import com.tang.app_common.manager.IRepositoryManager;
-import com.tang.app_common.manager.RepositoryManager;
-import com.tang.app_common.mvp.BaseModel;
-import com.tang.app_common.utils.LogUtil;
+import com.tang.common.base.BaseResponse;
+import com.tang.common.http.HttpService;
+import com.tang.common.manager.IRepositoryManager;
+import com.tang.common.manager.RepositoryManager;
+import com.tang.common.mvp.BaseModel;
+import com.tang.common.utils.LogUtil;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.functions.Function;

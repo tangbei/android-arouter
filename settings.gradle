@@ -1,1 +1,1 @@
-include ':app', ':app_common', ':common', ':module_home'
+include ':app', ':common', ':resource', ':module_home'

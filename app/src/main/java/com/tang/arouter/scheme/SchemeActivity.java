@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.tang.app_common.base.BaseActivity;
+import com.tang.common.base.BaseActivity;
 import com.tang.arouter.R;
 
 /**

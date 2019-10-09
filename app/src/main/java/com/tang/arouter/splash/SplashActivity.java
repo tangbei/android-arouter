@@ -3,11 +3,9 @@ package com.tang.arouter.splash;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.tang.app_common.base.BaseActivity;
-import com.tang.app_common.constant.Constant;
-import com.tang.app_common.router.ARouterManager;
-import com.tang.app_common.router.CommonRouter;
+import com.tang.common.base.BaseActivity;
+import com.tang.common.router.ARouterManager;
+import com.tang.common.router.CommonRouter;
 import com.tang.arouter.R;
 
 import butterknife.OnClick;

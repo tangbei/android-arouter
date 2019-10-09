@@ -7,14 +7,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.tang.app_common.base.BaseActivity;
-import com.tang.app_common.constant.Constant;
-import com.tang.app_common.livedata.LiveDataBus;
-import com.tang.app_common.mvp.IModel;
-import com.tang.app_common.router.ARouterManager;
-import com.tang.app_common.router.CommonRouter;
-import com.tang.app_common.utils.LogUtil;
-import com.tang.app_common.utils.ToastUtil;
+import com.tang.common.base.BaseActivity;
+import com.tang.common.constant.Constant;
+import com.tang.common.livedata.LiveDataBus;
+import com.tang.common.mvp.IModel;
+import com.tang.common.router.ARouterManager;
+import com.tang.common.router.CommonRouter;
+import com.tang.common.utils.LogUtil;
+import com.tang.common.utils.ToastUtil;
 import com.tang.module_home.R;
 
 /**
