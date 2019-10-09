@@ -4,5 +4,7 @@
     <application
         >
         <activity android:name=".main.MainActivity"/>
+
+        <activity android:name=".TestActivity"/>
     </application>
 </manifest>

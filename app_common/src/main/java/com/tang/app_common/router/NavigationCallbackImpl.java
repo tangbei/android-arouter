@@ -6,7 +6,7 @@ import com.tang.app_common.constant.Constant;
 import com.tang.app_common.utils.LogUtil;
 
 /**
- * 描述: 结果回调实现类
+ * 描述: aRouter跳转结果回调实现类
  * 作者 : Tong
  * e-mail : itangbei@sina.com
  * 创建时间: 2019/9/17.

@@ -9,15 +9,10 @@ import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.View;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.tang.app_common.R;
-import com.tang.app_common.constant.Constant;
 import com.tang.app_common.delegate.IActivity;
 import com.tang.app_common.lifecycle.ActivityLifecycleable;
 import com.tang.app_common.mvp.IPresenter;
-import com.tang.app_common.mvp.IView;
 import com.trello.rxlifecycle2.android.ActivityEvent;
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.subjects.BehaviorSubject;

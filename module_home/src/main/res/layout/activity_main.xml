@@ -8,4 +8,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="我是内容了哦"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btn_liveData"
+        android:text="livedata测试"/>
 </LinearLayout>

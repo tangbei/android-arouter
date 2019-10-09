@@ -6,7 +6,6 @@ import com.tang.app_common.manager.IRepositoryManager;
 import com.tang.app_common.manager.RepositoryManager;
 import com.tang.app_common.mvp.BaseModel;
 import com.tang.app_common.utils.LogUtil;
-
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.functions.Function;

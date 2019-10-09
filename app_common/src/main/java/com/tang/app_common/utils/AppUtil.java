@@ -3,7 +3,11 @@ package com.tang.app_common.utils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
+import android.os.Build;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 
 /**
  * 描述:
@@ -77,5 +81,28 @@ public class AppUtil {
      */
     public static Resources getResources(Context context) {
         return context.getResources();
+    }
+
+    /**
+     * 获取设备唯一id
+     * @return
+     */
+    public static String getDetailId(Context context){
+        String id = "";
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            try{
+                TelephonyManager tm = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+                id = tm.getDeviceId();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        if (TextUtils.isEmpty(id)){
+            id = Settings.Secure.getString(context.getApplicationContext().getContentResolver(),Settings.Secure.ANDROID_ID);
+        }
+        if (TextUtils.isEmpty(id)){
+            ToastUtil.show(context,"获取设备id失败");
+        }
+        return id;
     }
 }

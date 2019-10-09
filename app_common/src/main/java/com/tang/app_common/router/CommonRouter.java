@@ -20,4 +20,6 @@ public class CommonRouter {
      */
     public static final String PATH_APP_MAIN_ACTIVITY = "/main/MainActivity";
 
+    public static final String PATH_APP_TESTS_ACTIVITY = "/main/TestActivity";
+
 }
