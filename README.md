@@ -2,14 +2,15 @@
 
 本工程使用现在最流行的组件化方案，多 module 方案，并使用 aRouter 作为支撑。
 
-![image](https://github.com/tangbei/android-arouter/blob/master/20190917184252.jpg)
+![image](https://github.com/tangbei/android-arouter/blob/master/build_model.png)
 
 
 #### 工程结构
-1. app-module 工程主入口，只有启动页和跳转的scheme。
-2. app-common 工程的公共代码存放，项目的mvp框架存放位置，所有创建的新module都必须导入此module。
-3. common 工程的所有公共资源、依赖存放位置。
-4. module-... 开发使用的主module，根据项目和需求可以创建若干个、相互之间独立，使用aRouter作为连接。
+1. app 工程主入口，只有启动页和跳转的scheme。
+2. common 工程的公共代码存放位置。
+3. frame 工程框架写入位置，采用mvp+retorfit+okHttp3+Rxjava2+rxlifeStyle开发。
+4. resource 工程公共资源写入位置、以及通用依赖写入位置
+5. module-... 开发使用的主module，根据项目和需求可以创建若干个、相互之间独立，使用aRouter作为连接。
 
 #### 单一工程和组件化比较
 
