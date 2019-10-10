@@ -2,21 +2,19 @@ package com.tang.common.http;
 
 import com.tang.common.constant.AppConfig;
 import com.tang.common.constant.Constant;
-import com.tang.common.cookies.CookiesManager;
-import com.tang.common.interceptor.HttpLoggingInterceptor;
+import com.tang.frame.cookies.CookiesManager;
+import com.tang.frame.interceptor.HttpLoggingInterceptor;
 import com.tang.common.utils.AppUtil;
-import com.tang.common.utils.ConstantUtil;
+import com.tang.frame.other.ConstantUtil;
 
 import java.io.File;
 import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.util.concurrent.TimeUnit;
-
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;

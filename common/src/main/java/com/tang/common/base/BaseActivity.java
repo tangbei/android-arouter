@@ -9,9 +9,9 @@ import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.View;
 
-import com.tang.common.delegate.IActivity;
-import com.tang.common.lifecycle.ActivityLifecycleable;
-import com.tang.common.mvp.IPresenter;
+import com.tang.frame.delegate.IActivity;
+import com.tang.frame.lifecycle.ActivityLifecycleable;
+import com.tang.frame.mvp.IPresenter;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

@@ -32,6 +32,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api project(path: ':resource')
+    api project(path: ':frame')
     annotationProcessor(rootProject.ext.dependencies['butterknife-compiler']) {
         exclude module: 'support-annotations'
         exclude module: 'support-compat'

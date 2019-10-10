@@ -3,8 +3,8 @@ package com.tang.module_home.main;
 import android.app.Activity;
 
 import com.tang.common.base.BaseResponse;
-import com.tang.common.mvp.IModel;
-import com.tang.common.mvp.IView;
+import com.tang.frame.mvp.IModel;
+import com.tang.frame.mvp.IView;
 
 import io.reactivex.Observable;
 

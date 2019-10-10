@@ -2,9 +2,9 @@ package com.tang.module_home.main;
 
 import com.tang.common.base.BaseResponse;
 import com.tang.common.http.HttpService;
-import com.tang.common.manager.IRepositoryManager;
-import com.tang.common.manager.RepositoryManager;
-import com.tang.common.mvp.BaseModel;
+import com.tang.frame.manager.IRepositoryManager;
+import com.tang.frame.manager.RepositoryManager;
+import com.tang.frame.mvp.BaseModel;
 import com.tang.common.utils.LogUtil;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;

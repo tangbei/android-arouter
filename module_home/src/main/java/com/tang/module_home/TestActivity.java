@@ -11,7 +11,7 @@ import com.tang.common.livedata.LiveDataBus;
 import com.tang.common.router.CommonRouter;
 import com.tang.common.utils.AppUtil;
 import com.tang.common.utils.LogUtil;
-import com.tang.common.utils.ToastUtil;
+import com.tang.frame.other.ToastUtil;
 
 /**
  * 描述:

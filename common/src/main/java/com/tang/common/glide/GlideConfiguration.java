@@ -13,7 +13,7 @@ import com.bumptech.glide.load.engine.cache.LruResourceCache;
 import com.bumptech.glide.load.engine.cache.MemorySizeCalculator;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.module.AppGlideModule;
-import com.tang.common.manager.RequestManager;
+import com.tang.frame.manager.RequestManager;
 import java.io.InputStream;
 
 /**

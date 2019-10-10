@@ -1,8 +1,8 @@
 package com.tang.common.http;
 
 import com.tang.common.constant.AppConfig;
-import com.tang.common.lifecycle.Lifecycleable;
-import com.tang.common.mvp.IView;
+import com.tang.frame.lifecycle.Lifecycleable;
+import com.tang.frame.mvp.IView;
 import com.tang.common.utils.RxLifecycleUtils;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;

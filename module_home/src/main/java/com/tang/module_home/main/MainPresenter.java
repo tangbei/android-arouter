@@ -3,7 +3,7 @@ package com.tang.module_home.main;
 import com.tang.common.base.BaseResponse;
 import com.tang.common.constant.Constant;
 import com.tang.common.http.HttpRequest;
-import com.tang.common.mvp.BasePresenter;
+import com.tang.frame.mvp.BasePresenter;
 import com.tang.common.utils.LogUtil;
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 

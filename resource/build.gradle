@@ -26,7 +26,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api rootProject.ext.dependencies['appcompat-v7']
+   /* api rootProject.ext.dependencies['appcompat-v7']
     api(rootProject.ext.dependencies["butterknife"]) {
         exclude module: 'support-annotations'
         exclude module: 'support-compat'
@@ -87,10 +87,10 @@ dependencies {
     annotationProcessor(rootProject.ext.dependencies["glide-compiler"]) {
         exclude module: 'jsr305'
     }
-    api rootProject.ext.dependencies["gson"]
+    api rootProject.ext.dependencies["gson"]*/
     api rootProject.ext.dependencies['arouter']
     api rootProject.ext.dependencies['autosize']
 
-    api rootProject.ext.dependencies["multidex"]
+//    api rootProject.ext.dependencies["multidex"]
     testImplementation rootProject.ext.dependencies["junit"]
 }

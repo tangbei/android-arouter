@@ -25,12 +25,43 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    signingConfigs {
+        release {
+            storeFile file("gstoolmall.jks")
+            storePassword "gstoolmall"
+            keyAlias "gstoolmall"
+            keyPassword "gstoolmall"
+        }
+        debug {
+        }
+    }
+
     buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            zipAlignEnabled rootProject.ext.android['zipAlignEnabled']
+            minifyEnabled rootProject.ext.android['minifyEnabled']
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled rootProject.ext.android['minifyEnabled']
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //如果方法数增多，使用分包方法时，设置此方法增快编译速度
+    dexOptions {
+        preDexLibraries = false
+    }
+
+    /*buildTypes {
         release {
             minifyEnabled rootProject.ext.android['minifyEnabled']
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
+    }*/
 }
 
 dependencies {

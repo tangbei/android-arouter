@@ -3,7 +3,7 @@ package com.tang.common.glide;
 import android.content.Context;
 import android.support.annotation.Nullable;
 
-import com.tang.common.utils.Preconditions;
+import com.tang.frame.other.Preconditions;
 
 /**
  * 描述:

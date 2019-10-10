@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tang.common.delegate.IFragment;
-import com.tang.common.mvp.IPresenter;
+import com.tang.frame.delegate.IFragment;
+import com.tang.frame.mvp.IPresenter;
 
 /**
  * 描述: fragment基类

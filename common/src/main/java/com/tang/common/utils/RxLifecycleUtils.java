@@ -1,9 +1,10 @@
 package com.tang.common.utils;
 
-import com.tang.common.lifecycle.ActivityLifecycleable;
-import com.tang.common.lifecycle.FragmentLifecycleable;
-import com.tang.common.lifecycle.Lifecycleable;
-import com.tang.common.mvp.IView;
+import com.tang.frame.lifecycle.ActivityLifecycleable;
+import com.tang.frame.lifecycle.FragmentLifecycleable;
+import com.tang.frame.lifecycle.Lifecycleable;
+import com.tang.frame.mvp.IView;
+import com.tang.frame.other.Preconditions;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.ActivityEvent;
