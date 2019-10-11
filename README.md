@@ -1,11 +1,112 @@
 # android组件化工程
 
-本工程使用现在最流行的组件化方案，多 module 方案，并使用 aRouter 作为支撑。
+本工程使用的是多model合一的组件化方案，并使用 aRouter 作为支撑，框架灵活、业务和功能分离。
 
 ![image](https://github.com/tangbei/android-arouter/blob/master/build_model.png)
 
 
-# liveDataBus
+由于本工程中使用的是：
+```aidl
+implementation project(path: ':common')
+```
+方式引入module,如果之后的业务需求增多，可能会导致**module**数量增多，app可能会引用多个**module**，导致编译速度变慢。可以把组件module生成aar形式上传
+到maven库，或公司的私有maven库上。使用的时候只需要 依赖 一下就可以了。
+* [android studio生产aar](https://blog.csdn.net/u011511601/article/details/80579543)
+* [aar上传maven](https://blog.csdn.net/a568478312/article/details/80166281)
+
+
+## ARouter
+
+自从阿里[ARouter](https://github.com/alibaba/ARouter)框架开源以来，model间不在有更多的耦合，android的mvp、mvvm框架也变成了其中的一部分。组件化后，
+mvp和mvvm都变得可以随意替换或共存。团队协作也不再变得嘈杂。具体原理可以 [点击](https://github.com/alibaba/ARouter)
+
+在工程common中的**ARouterManager.class**中，有统一写跳转方式和跳转动画。
+
+
+```aidl
+ /**
+     * 不带参数的跳转
+     * @param url
+     */
+    public static void startActivity(Activity activity,String url){
+        ARouter.getInstance()
+                .build(url)
+                .withTransition(startTransition(0,Constant.AnimationType.LEFT),startTransition(1,Constant.AnimationType.LEFT))
+                .navigation(activity);
+    }
+    
+     /**
+         * 带参数跳转
+         * @param url 跳转的路由地址
+         * @param bundle 携带的参数
+         */
+        public static void startActivity(Activity activity,String url, Bundle bundle){
+            // 对象传递
+            ARouter.getInstance()
+                    .build(url)
+                    .with(bundle)
+                    .withTransition(startTransition(0,Constant.AnimationType.LEFT),startTransition(1,Constant.AnimationType.LEFT))
+                    .navigation(activity);
+        }
+```
+
+同时路由参数可以在module中统一配置：
+
+```aidl
+/**
+ * 描述: 本工程的所有路由跳转,统一维护
+ * 作者 : Tong
+ * e-mail : itangbei@sina.com
+ * 创建时间: 2019/9/11.
+ */
+public class CommonRouter {
+
+    /**
+     * app
+     */
+    public static final String PATH_APP_SPLASH_ACTIVITY = "/app/SplashActivity";
+
+    public static final String PATH_APP_TEST_ACTIVITY = "/app/TestActivity";
+
+    /**
+     * main
+     */
+    public static final String PATH_APP_MAIN_ACTIVITY = "/main/MainActivity";
+
+    public static final String PATH_APP_TESTS_ACTIVITY = "/main/TestActivity";
+
+}
+```
+
+也可以统一处理跳转拦截等：
+
+```aidl
+/**
+ * 描述: 登录拦截
+ * 作者 : Tong
+ * e-mail : itangbei@sina.com
+ * 创建时间: 2019/9/17.
+ */
+@Interceptor(priority = 8, name = "登录拦截器")
+public class LoginInterceptor implements IInterceptor {
+
+    @Override
+    public void process(Postcard postcard, InterceptorCallback callback) {
+        LogUtil.d("tang--->","我是登录拦截器哦");
+        callback.onContinue(postcard);  // 处理完成，交还控制权
+    }
+
+    @Override
+    public void init(Context context) {
+        LogUtil.d("tang--->","我是登录拦截器哦init");
+    }
+}
+
+```
+
+
+
+## liveDataBus
 
 项目中添加了liveDataBus，果断抛弃eventBus。有太多优点了，轻量、便于理解。
 具体可以 点击 [liveDataBus](https://juejin.im/post/5b5ac0825188251acd0f3777)
