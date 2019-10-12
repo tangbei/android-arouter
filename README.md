@@ -2,7 +2,7 @@
 
 本工程使用的是多model合一的组件化方案，并使用 aRouter 作为支撑，框架灵活、业务和功能分离。
 
-![image](https://github.com/tangbei/android-arouter/blob/master/build_model.png)
+![image](https://github.com/tangbei/android-arouter/blob/master/readme_image/build_model.png)
 
 
 #### 当前组件化工程的分支androidx 中，是androidx版本的组件化工程。[可点击](https://github.com/tangbei/android-arouter/tree/androidx)
