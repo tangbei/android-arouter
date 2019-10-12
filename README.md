@@ -5,6 +5,9 @@
 ![image](https://github.com/tangbei/android-arouter/blob/master/build_model.png)
 
 
+#### 当前组件化工程的分支androidx 中，是androidx版本的组件化工程。[可点击](https://github.com/tangbei/android-arouter/tree/androidx)
+
+
 由于本工程中使用的是：
 ```aidl
 implementation project(path: ':common')
@@ -13,6 +16,56 @@ implementation project(path: ':common')
 到maven库，或公司的私有maven库上。使用的时候只需要 依赖 一下就可以了。
 * [android studio生产aar](https://blog.csdn.net/u011511601/article/details/80579543)
 * [aar上传maven](https://blog.csdn.net/a568478312/article/details/80166281)
+
+
+## butterknife
+
+在android组件化工程中使用[黄油刀butterknife](https://github.com/JakeWharton/butterknife)，会存在在library工程中使用的问题：
+
+正常情况下 在工程的app工程中配置：
+```aidl
+api "com.jakewharton:butterknife:10.2.0"
+annotationProcessor(rootProject.ext.dependencies['butterknife-compiler'])
+```
+即可。本工程中是统一放在 resoure 下的gradle中。
+
+
+而组件化项目需要在根**build.gradle**的buildscript中添加
+```aidl
+dependencies {
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.0'
+    }
+```
+同时需要在相应 library 的**build.gradle**中添加
+```aidl
+apply plugin: 'com.jakewharton.butterknife'
+
+
+dependencies {
+    annotationProcessor(rootProject.ext.dependencies['butterknife-compiler'])
+}
+
+```
+
+在library工程使用时需要把 R2 替换 R：
+![image](https://github.com/tangbei/android-arouter/blob/androidx/readme_image/20191012143829.png)
+
+![image](https://github.com/tangbei/android-arouter/blob/androidx/readme_image/20191012144543.png)
+
+
+#### 注意
+
+如果不是使用的androidx,则butterknife使用9.0.0版本即可，使用方式和上面一样，但是会报下面警告，但是不影响编译和使用：
+
+```aidl
+Configure project :app
+WARNING: API ‘variant.getJavaCompiler()’ is obsolete and has been replaced with ‘variant.getJavaCompileProvider()’.
+It will be removed at the end of 2019.
+For more information, see https://d.android.com/r/tools/task-configuration-avoidance.
+To determine what is calling variant.getJavaCompiler(), use -Pandroid.debug.obsoleteApi=true on the command line to display a stack trace.
+
+
+```
 
 
 ## ARouter
@@ -119,6 +172,13 @@ public class LoginInterceptor implements IInterceptor {
 ```
 这样 liveDataBus中的**hook**才会生效。
 
+**如果是在androidx上使用liveDataBus,则把混淆改成如下。同时还得 记得在下面的混淆方案中，把androidx的混淆加上**
+
+```aidl
+-keep class androidx.arch.lifecycle.** { *; }
+-keep class androidx.arch.core.** { *; }
+```
+
 
 
 ## 混淆方案
@@ -139,15 +199,27 @@ release {
 3. 在子model中混淆，一旦业务组件的代码被混淆，而这时候代码中又出现了bug，将很难根据日志找出导致bug的原因。
 4. 各子模块中都有混淆、不便于维护和修改。
 
+3. androidx混淆中需添加：
+```aidl
+# ----------------------------- androidx -----------------------------
+-keep class com.google.android.material.** {*;}
+-keep class androidx.** {*;}
+-keep public class * extends androidx.**
+-keep interface androidx.** {*;}
+-dontwarn com.google.android.material.**
+-dontnote com.google.android.material.**
+-dontwarn androidx.**
+```
 
-#### 工程结构
+
+## 工程结构
 1. app 工程主入口，只有启动页和跳转的scheme。
 2. common 工程的公共代码存放位置。
 3. frame 工程框架写入位置，采用mvp+retorfit+okHttp3+Rxjava2+rxlifeStyle开发。
 4. resource 工程公共资源写入位置、以及通用依赖写入位置
 5. module-... 开发使用的主module，根据项目和需求可以创建若干个、相互之间独立，使用aRouter作为连接。
 
-#### 单一工程和组件化比较
+## 单一工程和组件化比较
 
 #### 一、单一工程
 1. 对工程的任意修改调试都要编译整个工程，效率十分低下。
