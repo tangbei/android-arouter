@@ -2,7 +2,7 @@
 .gradle
 /.idea
 /gradle
-/gradle.properties
+#/gradle.properties
 /gradlew
 /gradlew.bat
 /local.properties
