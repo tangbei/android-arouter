@@ -27,10 +27,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("gstoolmall.jks")
-            storePassword "gstoolmall"
-            keyAlias "gstoolmall"
-            keyPassword "gstoolmall"
+            storeFile file("tangkey.jks")
+            storePassword "12345678"
+            keyAlias "tangAlias"
+            keyPassword "12345678"
         }
         debug {
         }
