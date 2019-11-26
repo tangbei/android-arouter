@@ -5,7 +5,6 @@
 ![image](https://github.com/tangbei/android-component/blob/master/readme_image/build_model.png)
 
 
-#### 当前组件化工程的分支androidx 中，是androidx版本的组件化工程。[可点击](https://github.com/tangbei/android-arouter/tree/androidx)
 
 
 由于本工程中使用的是：
