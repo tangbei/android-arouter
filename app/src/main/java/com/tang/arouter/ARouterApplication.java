@@ -8,6 +8,7 @@ import com.squareup.leakcanary.LeakCanary;
 import com.tang.common.api.ActivityLifecycleCallbacksImpl;
 import com.tang.common.constant.AppConfig;
 import com.tang.common.constant.Constant;
+import com.tang.common.utils.ScreenAdaptUtil;
 import com.tang.frame.delegate.AppDelegate;
 import com.tang.frame.delegate.AppLifecycles;
 import com.tang.frame.other.ConstantUtil;
@@ -41,6 +42,8 @@ public class ARouterApplication extends Application {
         ARouter.openLog();     // 打印日志
         ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         ARouter.init(this); //初始化aRouter
+
+        ScreenAdaptUtil.setDensity(this);
 
         LeakCanary.install(this);
     }

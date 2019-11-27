@@ -16,6 +16,10 @@ public class Constant {
     public static class Common {
 
         public static final String TAG = "";
+
+        public static final int CREEN_WIDTH = 360;//设计图的宽
+
+        public static final int SCREEN_HEIGHT = 720;//设计图的高
     }
 
     /**

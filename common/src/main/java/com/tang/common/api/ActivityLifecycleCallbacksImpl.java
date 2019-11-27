@@ -5,6 +5,7 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.tang.common.utils.LogUtil;
+import com.tang.common.utils.ScreenAdaptUtil;
 
 /**
  * 描述: activity生命周期代理实现类
@@ -18,6 +19,7 @@ public class ActivityLifecycleCallbacksImpl implements Application.ActivityLifec
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+        ScreenAdaptUtil.setDefault(activity);
         LogUtil.d(TAG,"onActivityCreated:"+activity);
     }
 
